@@ -297,7 +297,7 @@
                         </div>
                     </div>
                     <div class="hotline d-none d-lg-block">
-                        <p><i class="fi-rs-smartphone"></i><span>Toll Free</span> (+1) 0000-000-000 </p>
+                        <p><i class="fi-rs-smartphone"></i><span>Toll Free</span> (+34) 666 666 666</p>
                     </div>
                     <p class="mobile-promotion">Happy <span class="text-brand">Mother's Day</span>. Big Sale Up to 40%</p>
                     <div class="header-action-right d-block d-lg-none">
@@ -451,13 +451,13 @@
                             </div>
                             <h5 class="mt-20 mb-10 fw-600 text-grey-4 wow fadeIn animated">Contact</h5>
                             <p class="wow fadeIn animated">
-                                <strong>Address: </strong>562 Wellington Road
+                                <strong>Address: </strong>Universidad Pablo de Olavide, Sevilla, Spain
                             </p>
                             <p class="wow fadeIn animated">
-                                <strong>Phone: </strong>+1 0000-000-000
+                                <strong>Phone: </strong>+34 666 666 666
                             </p>
                             <p class="wow fadeIn animated">
-                                <strong>Email: </strong>contact@surfsidemedia.in
+                                <strong>Email: </strong>OrosArPeso@gmail.com
                             </p>
                             <h5 class="mb-10 mt-30 fw-600 text-grey-4 wow fadeIn animated">Follow Us</h5>
                             <div class="mobile-social-icon wow fadeIn animated mb-sm-5 mb-md-0">
