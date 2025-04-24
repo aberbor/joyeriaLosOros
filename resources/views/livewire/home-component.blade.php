@@ -86,7 +86,7 @@
                                     </div>
                                     <div class="product-content-wrap">
                                         <div class="product-category"> 
-                                            <a href="shop.html">Jelwery</a>
+                                            <a href="{{route('shop')}}">Jelwery</a>
                                         </div>
                                         <h2><a href="product-details.html">Gengar Chain</a></h2>
                                         <div class="product-price">
