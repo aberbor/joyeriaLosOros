@@ -10,34 +10,43 @@ use App\Models\Category;
 use App\Models\Wishlist;
 
 
-class ShopComponent extends Component
+class SearchComponent extends Component
 {
 
     use WithPagination;
+
+    public $q;
+    public $search_term;
+
+    public function mount($q = null)
+    {
+        $this->fill(request()->only('q'));
+        $this->search_term = '%'.$this->q.'%';
+    }
 
     public function store($product_id, $product_name, $product_price)
     {
         Cart::instance('cart')->add($product_id, $product_name, 1, $product_price)->associate('App\Models\Product');  
         session()->flash('success_message', 'Item added in cart');
-        $this->emiteTo('cart-icon-component','refreshComponent');
+        $this->emiteTo('cart-icon-component', 'refreshComponent');
         return redirect()->route('shop.cart');
 
     }
 
     public function addToWishlist($product_id, $product_name, $product_price)
     {
-        Cart::instance('wishlist')->add($product_id,$product_name, 1, $product_price)->associate('App\Models\Product');
+        Cart::instance('wishlist')->add($product_id,$product_name, 1,$product_price)->associate('App\Models\Product');
         $this->emitTo('wishlist-icon-component', 'refreshComponent');
     }
 
 
     public function render()
     {
-        $products = Product::paginate(12);   
+        $products = Product::where('name', 'like',$this->search_term)->paginate(12);   
         
 
         $categories = Category::orderBy("name","ASC")->get();
-        return view('livewire.shop-component',['products'=>$products,'categories'=>$categories]);
+        return view('livewire.search-component',['products'=>$products,'categories'=>$categories]);
     }
 
 }
