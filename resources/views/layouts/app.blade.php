@@ -252,7 +252,7 @@
                     <div class="header-action-right d-block d-lg-none">
                         <div class="header-action-2">
                             <div class="header-action-icon-2">
-                                <a href="shop-wishlist.php">
+                                <a href="{{route('shop.wishlist')}}">
                                     <img alt="Surfside Media" src="{{ asset('assets/imgs/theme/icons/icon-heart.svg') }}">
                                     <span class="pro-count white">4</span>
                                 </a>
