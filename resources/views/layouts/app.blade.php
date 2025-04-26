@@ -55,7 +55,7 @@
                             @auth
                             <ul>                                
                                 <li><i class="fi-rs-user"></i> {{ Auth::user()->name }} / 
-                                    <form method="post" action="{{ route('logout') }}">
+                                    <form method="POST" action="{{ route('logout') }}">
                                         @csrf
                                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">Log Out </a>
                                     </form>
@@ -482,6 +482,7 @@
     <script src="{{ asset('assets/js/main.js?v=3.3') }}"></script>
     <script src="{{ asset('assets/js/shop.js?v=3.3') }}"></script>
     @livewireScripts
+    @stack('scripts')
 </body>
 
 </html>

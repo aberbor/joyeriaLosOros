@@ -42,7 +42,7 @@ class SearchComponent extends Component
 
     public function render()
     {
-        $products = Product::where('name', 'like',$this->search_term)->paginate(12);   
+        $products = Product::whereBetween('regular_price',[$this->min_value,$this->max_value])->where('name', 'like',$this->search_term)->paginate(12);   
         
 
         $categories = Category::orderBy("name","ASC")->get();

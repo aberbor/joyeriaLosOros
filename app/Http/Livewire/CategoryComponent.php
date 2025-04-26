@@ -40,7 +40,7 @@ class CategoryComponent extends Component
         $category_id = $category->id;
         $category_name = $category->name;
 
-        $products = Product::where('category_id', $category_id)->paginate(12);   
+        $products = Product::whereBetween('regular_price',[$this->min_value,$this->max_value])->where('category_id', $category_id)->paginate(12);   
         
 
         $categories = Category::orderBy("name","ASC")->get();

@@ -20,7 +20,7 @@ class AuthAdmin
         if(Auth::user()->type === 'admin') {
             return $next($request);
         }else{
-            session()->flush;
+            session()->flush();
             return redirect()->route('login');
         }
 

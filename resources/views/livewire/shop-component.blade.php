@@ -51,7 +51,11 @@
                                             <div class="product-action-1">
                                                 <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
                                                     <i class="fi-rs-search"></i></a>
-                                                <a aria-label="Add To Wishlist" class="action-btn hover-up" href="wishlist.php"><i class="fi-rs-heart"></i></a>
+                                                    @if($witems->contains($product->id))
+                                                        <a aria-label="Remove From Wishlist" class="action-btn hover-up wishlisted" href="#" wire:click.prevent="removeFromWishlist({{$product->id}})"><i class="fi-rs-heart"></i></a>
+                                                    @else
+                                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" href="#" wire:click.prevent="addToWishlist({{$product->id}},'{{$product->name}}',{{$product->regular_price}})"><i class="fi-rs-heart"></i></a>
+                                                    @endif
                                                 <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i class="fi-rs-shuffle"></i></a>
                                             </div>
                                             <div class="product-badges product-badges-position product-badges-mrg">
@@ -70,11 +74,10 @@
                                             </div>
                                             <div class="product-price">
                                                 <span>{{$product->regular_price}}</span>
-                                                <!-- <span class="old-price">$245.8</span> -->
                                             </div>
                                             <div class="product-action-1 show">
                                                 @if($witems->contains($product->id))
-                                                     <a aria-label="Add To Wishlist" class="action-btn hover-up wishlisted" href="wishlist.php"><i class="fi-rs-heart"></i></a>
+                                                     <a aria-label="Remove From Wishlist" class="action-btn hover-up wishlisted" href="#" wire:click.prevent="removeFromWishlist({{$product->id}})"><i class="fi-rs-heart"></i></a>
                                                 @else
                                                      <a aria-label="Add To Wishlist" class="action-btn hover-up" href="#" wire:click.prevent="addToWishlist({{$product->id}},'{{$product->name}}',{{$product->regular_price}})"><i class="fi-rs-heart"></i></a>
                                                 @endif
@@ -88,16 +91,6 @@
                             <!--pagination-->
                             <div class="pagination-area mt-15 mb-sm-5 mb-lg-0">
                                 {{ $products->links() }}
-                                <!-- <nav aria-label="Page navigation example">
-                                    <ul class="pagination justify-content-start">
-                                        <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">03</a></li>
-                                        <li class="page-item"><a class="page-link dot" href="#">...</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">16</a></li>
-                                        <li class="page-item"><a class="page-link" href="#"><i class="fi-rs-angle-double-small-right"></i></a></li>
-                                    </ul>
-                                </nav> -->
                             </div>
                         </div>
                         <div class="col-lg-3 primary-sidebar sticky-sidebar">
@@ -116,69 +109,18 @@
                             <!-- Fillter By Price -->
                             <div class="sidebar-widget price_range range mb-30">
                                 <div class="widget-header position-relative mb-20 pb-10">
-                                    <h5 class="widget-title mb-10">Fill by price</h5>
+                                    <h5 class="widget-title mb-10">Filter by price</h5>
                                     <div class="bt-1 border-color-1"></div>
                                 </div>
                                 <div class="price-filter">
-                                    <div class="price-filter-inner">
+                                    <div class="price-filter-inner" wire:ignore>
                                         <div id="slider-range"></div>
                                         <div class="price_slider_amount">
                                             <div class="label-input">
-                                                <span>Range:</span><input type="text" id="amount" name="price" placeholder="Add Your Price">
+                                                <span>Range:</span><span class="text-info"> ${{$min_price}}</span> - <span class="text-info"> ${{$max_price}}</span>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <!-- Product sidebar Widget -->
-                            <div class="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10">
-                                <div class="widget-header position-relative mb-20 pb-10">
-                                    <h5 class="widget-title mb-10">New products</h5>
-                                    <div class="bt-1 border-color-1"></div>
-                                </div>
-                                <div class="single-post clearfix">
-                                    <div class="image">
-                                        <img src="{{ asset('assets/imgs/shop/thumbnail-3.jpg') }}" alt="#">
-                                    </div>
-                                    <div class="content pt-10">
-                                        <h5><a href="{{route('product.details',['slug'=>$product->slug])}}">Chen Cardigan</a></h5>
-                                        <p class="price mb-0 mt-5">$99.50</p>
-                                        <div class="product-rate">
-                                            <div class="product-rating" style="width:90%"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="single-post clearfix">
-                                    <div class="image">
-                                        <img src="{{ asset('assets/imgs/shop/thumbnail-4.jpg') }}" alt="#">
-                                    </div>
-                                    <div class="content pt-10">
-                                        <h6><a href="{{route('product.details',['slug'=>$product->slug])}}">Chen Sweater</a></h6>
-                                        <p class="price mb-0 mt-5">$89.50</p>
-                                        <div class="product-rate">
-                                            <div class="product-rating" style="width:80%"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="single-post clearfix">
-                                    <div class="image">
-                                        <img src="{{ asset('assets/imgs/shop/thumbnail-5.jpg') }}" alt="#">
-                                    </div>
-                                    <div class="content pt-10">
-                                        <h6><a href="{{route('product.details',['slug'=>$product->slug])}}">Colorful Jacket</a></h6>
-                                        <p class="price mb-0 mt-5">$25</p>
-                                        <div class="product-rate">
-                                            <div class="product-rating" style="width:60%"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="banner-img wow fadeIn mb-45 animated d-lg-block d-none">
-                                <img src="{{ asset('assets/imgs/banner/banner-11.jpg') }}" alt="">
-                                <div class="banner-text">
-                                    <span>Women Zone</span>
-                                    <h4>Save 17% on <br>Office Dress</h4>
-                                    <a href="{{route('shop')}}">Shop Now <i class="fi-rs-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -187,3 +129,23 @@
             </section>
         </main>
 </div>
+
+@push('scripts')
+    <script>
+        var sliderrange = $('#slider-range');
+    var amountprice = $('#amount');
+    $(function() {
+        sliderrange.slider({
+            range: true,
+            min: 0,
+            max: 100000,
+            values: [0, 100000],
+            slide: function(event, ui) {
+                //amountprice.val("$" + ui.values[0] + " - $" + ui.values[1]);
+                @this.set('min_price', ui.values[0]);
+                @this.set('max_price', ui.values[1]);
+            }
+        });
+    });
+    </script>
+@endpush
