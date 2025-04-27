@@ -14,6 +14,8 @@ use App\Http\Livewire\CategoryComponent;
 use App\Http\Livewire\SearchComponent;
 use App\Http\Livewire\WishlistComponent;
 use App\Http\Livewire\WishListIconComponent;
+use App\Http\Livewire\Admin\AdminCategoriesComponent;
+use App\Http\Livewire\Admin\AdminAddCategoryComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +43,8 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth','authadmin'])->group(function () {
     Route::get('/admin/dashboard',AdminDashboardComponent::class)->name('admin.dashboard');
+    Route::get('/admin/categories',AdminCategoriesComponent::class)->name('admin.categories');
+    route::get('/admin/Category/add',AdminAddCategoryComponent::class)->name('admin.category.add');
 });
 
 require __DIR__.'/auth.php';

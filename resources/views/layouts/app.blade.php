@@ -222,25 +222,25 @@
                                     </li>
                                     <li><a href="blog.html">Blog </a></li>                                    
                                     <li><a href="contact.html">Contact</a></li>
+                                    @auth
                                     <li><a href="#">My Account<i class="fi-rs-angle-down"></i></a>
-                                        @auth
-                                            @if(Auth::user()->type === 'admin')
-                                                <ul class="sub-menu">
-                                                    <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                                                    <li><a href="#">Products</a></li>
-                                                    <li><a href="#">Categories</a></li>
-                                                    <li><a href="#">Coupons</a></li>
-                                                    <li><a href="#">Orders</a></li>
-                                                    <li><a href="#">Customers</a></li>
-                                                    <li><a href="#">Logout</a></li>                                            
-                                                </ul>
-                                            @else
-                                                <ul class="sub-menu">
-                                                    <li><a href="{{ route('user.dashboard') }}">Dashboard</a></li>                                          
-                                                </ul>
-                                            @endif
+                                        @if(Auth::user()->type === 'admin')
+                                            <ul class="sub-menu">
+                                                <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                                                <li><a href="#">Products</a></li>
+                                                <li><a href="{{ route('admin.categories') }}">Categories</a></li>
+                                                <li><a href="#">Coupons</a></li>
+                                                <li><a href="#">Orders</a></li>
+                                                <li><a href="#">Customers</a></li>
+                                                <li><a href="#">Logout</a></li>                                            
+                                            </ul>
+                                        @else
+                                            <ul class="sub-menu">
+                                                <li><a href="{{ route('user.dashboard') }}">Dashboard</a></li>                                          
+                                            </ul>
                                         @endif
                                     </li>
+                                    @endif
                                 </ul>
                             </nav>
                         </div>
