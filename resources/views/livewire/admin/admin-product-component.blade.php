@@ -13,7 +13,7 @@
             <div class="container">
                 <div class="breadcrumb">
                     <a href="/" rel="nofollow">Home</a>
-                    <span></span> All Categories
+                    <span></span> All Products
                 </div>
             </div>
         </div>
@@ -25,10 +25,10 @@
                             <div class="card-header">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        All Categories
+                                        All Products
                                     </div>
                                     <div class="col-md-6">
-                                        <a href="{{ route('admin.category.add') }}" class="btn btn-success float-end">Add New Category</a>
+                                        <a href="{{ route('admin.product.add') }}" class="btn btn-success float-end">Add New Product</a>
                                     </div>
                                 </div>
                             </div>
@@ -42,29 +42,38 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
+                                            <th>Image</th>
                                             <th>Name</th>
-                                            <th>Slug</th>
+                                            <th>Stock</th>
+                                            <th>Price</th>
+                                            <th>Category</th>
+                                            <th>Date</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @php
-                                            $i = ($categories->currentPage()-1) * $categories->perPage();
+                                            $i = ($products->currentPage()-1) * $products->perPage();
                                         @endphp
-                                        @foreach($categories as $category)
+                                        @foreach($products as $product)
                                             <tr>
                                                 <td>{{ ++$i }}</td>
-                                                <td>{{ $category->name }}</td>
-                                                <td>{{ $category->slug }}</td>
+                                                <td><img src="{{ asset('assets/imgs/products')}}/{{$product->iamge}}" alt="{{ $product->name }}" width="60"></td>
+                                                <td>{{ $product->name }}</td>
+                                                <td>{{ $product->stock_satatus }}</td>
+                                                <td>{{ $product->regular_price }}</td>
+                                                <td>{{ $product->category->name}}</td>
+                                                <td>{{ $product->created_at }}</td>
+
                                                 <td>
-                                                    <a href="{{ route('admin.category.edit', ['category_id' => $category->id]) }}" class="text-info">Edit</a>
-                                                    <a href="#" class="text-danger" style="margin-left: 20px;" onclick="confirm('Are you sure you want to delete this category?') || event.stopImmediatePropagation()" wire:click.prevent="deleteCategory({{ $category->id }})">Delete</a>
+                                                    {{-- <a href="{{ route('admin.product.edit', ['product_id' => $product->id]) }}" class="text-info">Edit</a> --}}
+                                                    {{-- <a href="#" class="text-danger" style="margin-left: 20px;" onclick="confirm('Are you sure you want to delete this product?') || event.stopImmediatePropagation()" wire:click.prevent="deleteCategory({{ $category->id }})">Delete</a> --}}
                                                 </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
-                                {{ $categories->links() }}
+                                {{ $products->links() }}
                             </div>
                         </div>
                     </div>

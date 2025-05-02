@@ -13,7 +13,7 @@
             <div class="container">
                 <div class="breadcrumb">
                     <a href="/" rel="nofollow">Home</a>
-                    <span></span> Add New Category
+                    <span></span> Edit Category
                 </div>
             </div>
         </div>
@@ -25,7 +25,7 @@
                             <div class="card-header">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        Add New Category
+                                        Edit Category
                                     </div>
                                     <div class="col-md-6">
                                         <a href="{{ route('admin.categories') }}" class="btn btn-success float-end">All Categories</a>
@@ -38,7 +38,7 @@
                                         {{ Session::get('message') }}
                                     </div>
                                 @endif
-                                <form wire:submit.prevent="storeCategory">
+                                <form wire:submit.prevent="updateCategory">
                                     <div class="mb-3 mt-3">
                                         <label for="name" class="form-label">Name</label>
                                         <input type="text" class="form-control" id="name" placeholder="Enter Category Name" wire:model="name" wire:keyup="generateSlug">
@@ -53,7 +53,7 @@
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                    <button type="submit" class="btn btn-primary float">Submit</button>
+                                    <button type="submit" class="btn btn-primary float-end">Submit</button>
                                 </form>
                             </div>
                         </div>
