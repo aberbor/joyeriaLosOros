@@ -53,7 +53,7 @@
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                    <button type="submit" class="btn btn-primary float">Submit</button>
+                                    <button type="submit" class="btn btn-primary float-end">Submit</button>
                                 </form>
                             </div>
                         </div>

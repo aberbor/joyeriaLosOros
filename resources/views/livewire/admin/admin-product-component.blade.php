@@ -66,8 +66,8 @@
                                                 <td>{{ $product->created_at }}</td>
 
                                                 <td>
-                                                    {{-- <a href="{{ route('admin.product.edit', ['product_id' => $product->id]) }}" class="text-info">Edit</a> --}}
-                                                    {{-- <a href="#" class="text-danger" style="margin-left: 20px;" onclick="confirm('Are you sure you want to delete this product?') || event.stopImmediatePropagation()" wire:click.prevent="deleteCategory({{ $category->id }})">Delete</a> --}}
+                                                    <a href="{{ route('admin.product.edit', ['product_id' => $product->id]) }}" class="text-info">Edit</a>
+                                                    <a href="#" class="text-danger" style="margin-left: 20px;" onclick="confirm('Are you sure you want to delete this product?') || event.stopImmediatePropagation()" wire:click.prevent="deleteProduct({{ $product->id }})">Delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach
