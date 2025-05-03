@@ -7,9 +7,12 @@ use Illuminate\Support\Str;
 use App\Models\Category;
 use Livewire\WithFileUploads;
 use App\Models\Product;
+use Carbon\Carbon;
 
 class AdminAddProductComponent extends Component
 {
+
+    use WithFileUploads;
 
     public $name;
     public $slug;

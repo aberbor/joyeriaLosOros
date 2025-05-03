@@ -103,8 +103,8 @@
                                         <label for="featured" class="form-label">Featured</label>
                                         <select class="form-select" name="featured" wire:model="featured">
                                             <option value="">Select Feature</option>
-                                            <option value="instock">No</option>
-                                            <option value="outofstock">Yes</option>
+                                            <option value="0">No</option>
+                                            <option value="1">Yes</option>
                                         </select>
                                         @error('featured')
                                             <span class="text-danger">{{ $message }}</span>
@@ -137,8 +137,9 @@
                                         @error('category_id')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
+                                        </select>
                                     </div>
-                                    <input type="submit" class="btn btn-primary float-end" value="Submit"></input>
+                                    <button type="submit" class="btn btn-primary float-end">Update Product</button>
                                 </form>
                             </div>
                         </div>
