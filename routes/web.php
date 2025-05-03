@@ -32,7 +32,7 @@ use App\Http\Livewire\Admin\AdminEditProductComponent;
 |
 */
 
-Route::get('/',HomeComponent::class)->name('home.index');
+Route::get('/',ShopComponent::class)->name('home.index');
 Route::get('/shop',ShopComponent::class)->name('shop');
 Route::get('/product/{slug}', DetailsComponent::class)->name('product.details');
 Route::get('/cart',CartComponent::class)->name('shop.cart');
@@ -51,7 +51,6 @@ Route::middleware(['auth','authadmin'])->group(function () {
     route::get('/admin/Category/add',AdminAddCategoryComponent::class)->name('admin.category.add');
     Route::get('/admin/category/edit/{category_id}',AdminEditCategoryComponent::class)->name('admin.category.edit');
     Route::get('/admin/products',AdminProductComponent::class)->name('admin.products');
-    //Route::get('/admin/product/edit/{product_id}',AdminEditCategoryComponent::class)->name('admin.product.edit');
     Route::get('/admin/product/add',AdminAddProductComponent::class)->name('admin.product.add');
     Route::get('/admin/product/edit/{product_id}',AdminEditProductComponent::class)->name('admin.product.edit');
 });
