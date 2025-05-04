@@ -121,7 +121,7 @@
                                         <label for="image" class="form-label">Image</label>
                                         <input type="file" class="form-control" name="image" placeholder="Enter Product Image" wire:model="image">
                                         @if($image)
-                                            <img src="{{ $image->temporaryUrl() }}" width="120" alt="Product Image">
+                                            <img src="{{ asset('assets/imgs/products/product-')}}/{{$product->id}}-1.jpg" width="120" alt="Product Image">
                                         @endif
                                         @error('image')
                                             <span class="text-danger">{{ $message }}</span>

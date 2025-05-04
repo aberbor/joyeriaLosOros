@@ -44,8 +44,8 @@
                                         <div class="product-img-action-wrap">
                                             <div class="product-img product-img-zoom">
                                                 <a href="{{route('product.details',['slug'=>$product->slug])}}">
-                                                    <img class="default-img" src="{{ asset('assets/imgs/products')}}/{{$product->iamge}}" alt="{{$product->name}}">
-                                                    <img class="hover-img" src="{{ asset('assets/imgs/shop/product-')}}{{$product->id}}2.jpg" alt="{{$product->name}}">
+                                                    <img class="default-img" src="{{ asset('assets/imgs/products/product-')}}{{$product->id}}-1.jpg" alt="{{$product->name}}">
+                                                    <img class="hover-img" src="{{ asset('assets/imgs/products/product-')}}{{$product->id}}-1.jpg" alt="{{$product->name}}">
                                                 </a>
                                             </div>
                                             <div class="product-action-1">
@@ -138,7 +138,7 @@
                                 </div>
                                 <div class="single-post clearfix">
                                     <div class="image">
-                                        <img src="{{ asset('assets/imgs/shop/thumbnail-3.jpg') }}" alt="#">
+                                        <img src="{{ asset('assets/imgs/products/product-')}}{{$product->id}}-1.jpg" alt="#">
                                     </div>
                                     <div class="content pt-10">
                                         <h5><a href="{{route('product.details',['slug'=>$product->slug])}}">Chen Cardigan</a></h5>
@@ -150,7 +150,7 @@
                                 </div>
                                 <div class="single-post clearfix">
                                     <div class="image">
-                                        <img src="{{ asset('assets/imgs/shop/thumbnail-4.jpg') }}" alt="#">
+                                        <img src="{{ asset('assets/imgs/products/product-')}}{{$product->id}}-1.jpg" alt="#">
                                     </div>
                                     <div class="content pt-10">
                                         <h6><a href="{{route('product.details',['slug'=>$product->slug])}}">Chen Sweater</a></h6>
@@ -162,23 +162,15 @@
                                 </div>
                                 <div class="single-post clearfix">
                                     <div class="image">
-                                        <img src="{{ asset('assets/imgs/shop/thumbnail-5.jpg') }}" alt="#">
+                                        <img src="{{ asset('assets/imgs/products/product-')}}{{$product->id}}-1.jpg" alt="#">
                                     </div>
                                     <div class="content pt-10">
-                                        <h6><a href="{{route('product.details',['slug'=>$product->slug])}}">Colorful Jacket</a></h6>
+                                        <h6><a href="{{route('product.details',['slug'=>$product->slug])}}">{{$product->name}}</a></h6>
                                         <p class="price mb-0 mt-5">$25</p>
                                         <div class="product-rate">
                                             <div class="product-rating" style="width:60%"></div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="banner-img wow fadeIn mb-45 animated d-lg-block d-none">
-                                <img src="{{ asset('assets/imgs/banner/banner-11.jpg') }}" alt="">
-                                <div class="banner-text">
-                                    <span>Women Zone</span>
-                                    <h4>Save 17% on <br>Office Dress</h4>
-                                    <a href="{{route('shop')}}">Shop Now <i class="fi-rs-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>

@@ -3,7 +3,7 @@
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="index.html" rel="nofollow">Home</a>
+                    <a href="{{ route('shop') }}" rel="nofollow">Home</a>
                     <span></span> Shop
                     <span></span> Checkout
                 </div>
@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="col-lg-6 mb-sm-15">
                         <div class="toggle_info">
-                            <span><i class="fi-rs-user mr-10"></i><span class="text-muted">Already have an account?</span> <a href="#loginform" data-bs-toggle="collapse" class="collapsed" aria-expanded="false">Click here to login</a></span>
+                            <span><i class="fi-rs-user mr-10"></i><span class="text-muted">Already have an account?</span> <a href="{{ route('login') }}" data-bs-toggle="collapse" class="collapsed" aria-expanded="false">Click here to login</a></span>
                         </div>
                         <div class="panel-collapse collapse login_form" id="loginform">
                             <div class="panel-body">
@@ -33,7 +33,7 @@
                                                 <label class="form-check-label" for="remember"><span>Remember me</span></label>
                                             </div>
                                         </div>
-                                        <a href="#">Forgot password?</a>
+                                        <a href="{{ route('password.request') }}">Forgot password?</a>
                                     </div>
                                     <div class="form-group">
                                         <button class="btn btn-md" name="login">Log in</button>
@@ -673,17 +673,15 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach (Cart::instance('cart')->content() as $item)
                                         <tr>
-                                            <td class="image product-thumbnail"><img src="{{ asset('assets/imgs/shop/product-1-1.jpg') }}" alt="#"></td>
-                                            <td>
-                                                <h5><a href="product-details.html">Gengar Chain</a></h5> <span class="product-qty">x 2</span>
-                                            </td>
-                                            <td>$3000.00</td>
+                                            <td class="image product-thumbnail"><img src="{{ asset('assets/imgs/products/product-')}}{{$item->model->id}}-1.jpg" alt="#"></td>
+                                            <td>{{$item->regular_price}}</td>
                                         </tr>
                                         
                                         <tr>
                                             <th>SubTotal</th>
-                                            <td class="product-subtotal" colspan="2">$3000.00</td>
+                                            <td class="product-subtotal" colspan="2">${{Cart::subtotal()}}</td>
                                         </tr>
                                         <tr>
                                             <th>Shipping</th>
@@ -691,8 +689,9 @@
                                         </tr>
                                         <tr>
                                             <th>Total</th>
-                                            <td colspan="2" class="product-subtotal"><span class="font-xl text-brand fw-900">$3000.00</span></td>
+                                            <td colspan="2" class="product-subtotal"><span class="font-xl text-brand fw-900">${{Cart::total()}}</span></td>
                                         </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>

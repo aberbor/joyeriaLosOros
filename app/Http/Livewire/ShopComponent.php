@@ -22,7 +22,7 @@ class ShopComponent extends Component
     {
         Cart::instance('cart')->add($product_id, $product_name, 1, $product_price)->associate('App\Models\Product');  
         session()->flash('success_message', 'Item added in cart');
-        $this->emiteTo('cart-icon-component','refreshComponent');
+        $this->emitTo('cart-icon-component','refreshComponent');
         return redirect()->route('shop.cart');
 
     }
