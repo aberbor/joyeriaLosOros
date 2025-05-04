@@ -34,7 +34,7 @@
                                 <tbody>
                                     @foreach (Cart::instance('cart')->content() as $item)
                                     <tr>
-                                        <td class="image product-thumbnail"><img src="{{ asset('assets/imgs/products/product-')}}{{$product->id}}-1.jpg" alt="#"></td>
+                                        <td class="image product-thumbnail"><img src="{{ asset('assets/imgs/products/product-')}}{{$item->model->id}}-1.jpg" alt="#"></td>
                                         <td class="product-des product-name">
                                             <h5 class="product-name"><a href="product-details.html">{{$item->model->name}}</a></h5>
                                             <!-- <p class="font-xs">Maboriosam in a tonto nesciung eget<br> distingy magndapibus.
@@ -389,7 +389,7 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <a href="checkout.html" class="btn "> <i class="fi-rs-box-alt mr-10"></i> Proceed To CheckOut</a>
+                                    <a href="{{ route('shop.checkout') }}" class="btn "> <i class="fi-rs-box-alt mr-10"></i> Proceed To CheckOut</a>
                                 </div>
                             </div>
                         </div>
