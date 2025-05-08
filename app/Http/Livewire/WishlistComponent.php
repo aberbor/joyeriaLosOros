@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Cart;
+use App\Models\Category;
 
 class WishlistComponent extends Component
 {
@@ -23,6 +24,9 @@ class WishlistComponent extends Component
 
     public function render()
     {
-        return view('livewire.wishlist-component');
+        $categories = Category::orderBy("name","ASC")->get();
+        return view('livewire.wishlist-component', [
+            'categories' => $categories,
+        ]);
     }
 }

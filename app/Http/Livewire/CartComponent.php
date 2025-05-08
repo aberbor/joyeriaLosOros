@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Cart;
+use App\Models\Category;
 
 class CartComponent extends Component
 {
@@ -41,6 +42,9 @@ class CartComponent extends Component
 
     public function render()
     {
-        return view('livewire.cart-component');
+        $categories = Category::orderBy("name","ASC")->get();
+        return view('livewire.cart-component', [
+            'categories' => $categories,
+        ]);
     }
 }

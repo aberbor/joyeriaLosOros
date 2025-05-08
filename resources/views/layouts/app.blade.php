@@ -103,72 +103,15 @@
                             <div class="categori-dropdown-wrap categori-dropdown-active-large">
                                 <ul>
                                     <li class="has-children">
-                                        <a href="{{route('shop')}}"><i class="surfsidemedia-font-dress"></i>Rings</a>
-                                        <div class="dropdown-menu">
-                                            <ul class="mega-menu d-lg-flex">
-                                                <li class="mega-menu-col col-lg-7">
-                                                    <ul class="d-lg-flex">
-                                                        <li class="mega-menu-col col-lg-6">
-                                                        <ul>
-                                                                <li><span class="submenu-title">Rings</span></li>
-                                                                <li><a class="dropdown-item nav-link nav_item" href="#">Gold Rings 24K</a></li>
-                                                                <li><a class="dropdown-item nav-link nav_item" href="#">Diamond Rings</a></li>
-                                                                <li><a class="dropdown-item nav-link nav_item" href="#">Silver Rings</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        
-                                                    </ul>
-                                                </li>
-                                                <li class="mega-menu-col col-lg-5">
-                                                    <div class="header-banner2">
-                                                        <img src="{{ asset('assets/imgs/banner/menu-banner-2.jpg') }}" alt="menu_banner1">
-                                                        <div class="banne_info">
-                                                            <h6>10% Off</h6>
-                                                            <h4>New Arrival</h4>
-                                                            <a href="#">Shop now</a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="header-banner2">
-                                                        <img src="{{ asset('assets/imgs/banner/menu-banner-3.jpg') }}" alt="menu_banner2">
-                                                        <div class="banne_info">
-                                                            <h6>15% Off</h6>
-                                                            <h4>Hot Deals</h4>
-                                                            <a href="#">Shop now</a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
+
+                                        @php                                           
+                                            $categories = App\Models\Category::orderBy('name','ASC')->get();
+                                        @endphp
+                                        @foreach ($categories as $category)
+                                            <li><a href="{{route('product.category',['slug'=>$category->slug])}}">{{$category->name}}</a></li>
+                                        @endforeach
                                     </li>
-                                    <li class="has-children">
-                                        <a href="{{route('shop')}}"><i class="surfsidemedia-font-tshirt"></i>Chains</a>
-                                        <div class="dropdown-menu">
-                                            <ul class="mega-menu d-lg-flex">
-                                                <li class="mega-menu-col col-lg-7">
-                                                    <ul class="d-lg-flex">
-                                                    <li class="mega-menu-col col-lg-6">
-                                                            <ul>
-                                                                <li><span class="submenu-title">Chains</span></li>
-                                                                <li><a class="dropdown-item nav-link nav_item" href="#">Pokemon Chains</a></li>
-                                                                <li><a class="dropdown-item nav-link nav_item" href="#">Gold Chains</a></li>
-                                                                <li><a class="dropdown-item nav-link nav_item" href="#">Bronx Chains</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="mega-menu-col col-lg-5">
-                                                    <div class="header-banner2">
-                                                        <img src="{{ asset('assets/imgs/banner/menu-banner-4.jpg') }}" alt="menu_banner1">
-                                                        <div class="banne_info">
-                                                            <h6>10% Off</h6>
-                                                            <h4>New Arrival</h4>
-                                                            <a href="#">Shop now</a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
+                                    
                                 </ul>
                                 <div class="more_categories">Show more...</div>
                             </div>
